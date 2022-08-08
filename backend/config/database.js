@@ -10,4 +10,6 @@ const connectDB = async () => {
     }
 }
 
+require('../models/journeyModel')
+
 module.exports = connectDB
