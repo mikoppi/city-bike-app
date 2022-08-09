@@ -29,16 +29,16 @@ const parseFile = (filePaths) => {
         }
     })
     .on("data-invalid", () => ++invalidRows)
-    .on("error", (error) => console.log(error))
+    .on("error", (error) => {
+        console.log('oh no', error)
+        return})
     .on("end", async (rowCount) => {
         //when the counter doesn't go over 1000 anymore we insert the rest
         console.log(`Parsing done`);
         await Journey.insertMany(journeys);
         journeys = [];
         console.log(
-            `Added ${rowCount - invalidRows} documents to database, deleted: ${
-                rowCount - invalidRows
-            } rows.`
+            `Added ${rowCount - invalidRows} documents to database, found ${invalidRows} invalid rows.`
             );
         });
         readStream.pipe(insertStream);

@@ -22,7 +22,7 @@ app.use('/api/journeys', require('./routes/journeyRoutes.js'))
 const importFiles =() => {
     const filePaths = ['./data/2021-05.csv', './data/2021-06.csv', './data/2021-07.csv']
     parser.parseFile(filePaths[0])
-    // parser.parseFile(filePaths[1])
+    //parser.parseFile(filePaths[1])
     // parser.parseFile(filePaths[2])
 }
 importFiles()
