@@ -1,24 +1,50 @@
-const csv = require("csv-parser");
+const csv = require("fast-csv");
 const fs = require("fs");
 const Journey = require("../models/journeyModel");
-const asyncHandler = require("express-async-handler");
-const journeys = [];
-let invalidRows=0;
 
-const parseFile = (filePath) => {
-    return new Promise((resolve,reject) => {
-        fs.createReadStream(filePath)
-          .pipe(csv({}))
-          .on('error', (error) => reject(error))
-          .on("data", (data) => validateData(data))
-          .on('end', (data) => {
-            console.log(`Parsing done`)
-            resolve(data)
-        })
+
+// const filePaths = ['./data/2021-05.csv', './data/2021-06.csv', './data/2021-07.csv']
+// parseFile(filePaths)
+
+const parseFile = (filePaths) => {
+    console.log(`Started adding document ${filePaths} to MongoDB`);
+    let journeys = [];
+    let invalidRows = 0;
+    let counter = 0;     
+    let readStream = fs.createReadStream(filePaths);
+    let insertStream = csv
+    .parse({ headers: true, ignoreEmpty: true })
+    //check for invalid rows with a function
+    .validate((data) => validateData(data))
+    .on("data", async (data) => {
+        ++counter;
+        journeys.push({ ...data });
+        if (counter >= 1000) {
+            //data needs be inserted in chunks of 1000 (for example) to avoid a crash
+            insertStream.pause();
+            await Journey.insertMany(journeys);
+            counter = 0;
+            journeys = [];
+            insertStream.resume();
+        }
     })
-};
-
-const validateData = asyncHandler(async (data) => {
+    .on("data-invalid", () => ++invalidRows)
+    .on("error", (error) => console.log(error))
+    .on("end", async (rowCount) => {
+        //when the counter doesn't go over 1000 anymore we insert the rest
+        console.log(`Parsing done`);
+        await Journey.insertMany(journeys);
+        journeys = [];
+        console.log(
+            `Added ${rowCount - invalidRows} documents to database, deleted: ${
+                rowCount - invalidRows
+            } rows.`
+            );
+        });
+        readStream.pipe(insertStream);
+    };
+    
+const validateData = (data) => {
   if (
     data["Departure"] == "" ||
     data["Return"] == "" ||
@@ -28,31 +54,30 @@ const validateData = asyncHandler(async (data) => {
     data["Return station name"] == "" ||
     parseInt(data["Covered distance (m)"]) < 10 ||
     parseInt(data["Duration (s)"]) < 10
-  ) {
-    invalidRows+=1
-    console.log('invalid', invalidRows)
-    return;
-  } else if(Object.keys(data).length === 0) {
-    return
-  } else {
-    //console.log(data);
-    await Journey.create({
-      Departure: data.Departure,
-      Return: data.Return,
-      "Departure station id": data["Departure station id"],
-      "Departure station name": data["Departure station name"],
-      "Return station id": data["Return station id"],
-      "Return station name": data["Return station name"],
-      "Covered distance (m)": data["Covered distance (m)"],
-      "Duration (s)": data["Duration (s)"],
-    });
-  }
-  
-});
+    ) {
+        return false;
+    } else {
+        return true;
+    }
+};
 
 module.exports = {
-  parseFile,
+    parseFile,
 };
-//parseFile('./data/journeysTestData.csv')
+
+// if database is empty use these to import all datasets
+//parseFile('./data/2021-05.csv')
+// parseFile('./data/2021-06.csv')
+// parseFile('./data/2021-07.csv')
 
 //node backend/utils/dataParser.js
+// await Journey.create({
+    //   Departure: data.Departure,
+    //   Return: data.Return,
+    //   "Departure station id": data["Departure station id"],
+    //   "Departure station name": data["Departure station name"],
+//   "Return station id": data["Return station id"],
+//   "Return station name": data["Return station name"],
+//   "Covered distance (m)": data["Covered distance (m)"],
+//   "Duration (s)": data["Duration (s)"],
+// });

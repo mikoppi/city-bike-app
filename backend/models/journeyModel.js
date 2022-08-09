@@ -3,35 +3,35 @@ const mongoose = require("mongoose");
 const journeySchema = mongoose.Schema({
   Departure: {
     type: String,
-    required: false,
+    default: undefined
   },
   Return: {
     type: String,
-    required: false,
+    default: undefined
   },
   "Departure station id": {
     type: String,
-    required: false,
+    default: undefined
   },
   "Departure station name": {
     type: String,
-    required: false,
+    default: undefined
   },
   "Return station id": {
     type: String,
-    required: false,
+    default: undefined
   },
   "Return station name": {
     type: String,
-    required: false,
+    default: undefined
   },
   "Covered distance (m)": {
     type: String,
-    required: false,
+    default: undefined
   },
   "Duration (s)": {
     type: String,
-    required: false,
+    default: undefined
   },
 });
 
