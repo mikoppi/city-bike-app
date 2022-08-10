@@ -2,8 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Journey = require("../models/journeyModel");
 
 const getJourneys = asyncHandler(async (req, res) => {
-  const journeys = await Journey.find().limit(10);
-  res.status(200).json(journeys);
+  res.json(res.paginate);
 });
 
 const setJourneys = asyncHandler(async (req, res) => {
