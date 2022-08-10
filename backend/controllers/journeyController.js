@@ -2,12 +2,12 @@ const asyncHandler = require("express-async-handler");
 const Journey = require("../models/journeyModel");
 
 const getJourneys = asyncHandler(async (req, res) => {
-  const journeys = await Journey.find();
+  const journeys = await Journey.find().limit(10);
   res.status(200).json(journeys);
 });
 
 const setJourneys = asyncHandler(async (req, res) => {
-  if (!req.body.Departure) {
+  if (!req.body) {
     res.status(400);
     throw new Error("Please add a journey");
   }

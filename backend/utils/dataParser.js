@@ -1,11 +1,9 @@
 const csv = require("fast-csv");
 const fs = require("fs");
 const Journey = require("../models/journeyModel");
+const Station = require("../models/stationModel");
 
-
-
-
-const parseFile = (filePaths) => {
+const parseJourneysFile = (filePaths) => {
     console.log(`Started adding document ${filePaths} to MongoDB`);
     let journeys = [];
     let invalidRows = 0;
@@ -14,12 +12,12 @@ const parseFile = (filePaths) => {
     let insertStream = csv
     .parse({ headers: true, ignoreEmpty: true })
     //check for invalid rows with a function
-    .validate((data) => validateData(data))
+    .validate((data) => validateJourneys(data))
     .on("data", async (data) => {
         ++counter;
         journeys.push({ ...data });
         if (counter >= 500) {
-            //data needs be inserted in chunks of 1000 (for example) to avoid a crash
+            //data needs be inserted in chunks of 500 (for example) to avoid a crash
             insertStream.pause();
             await Journey.insertMany(journeys);
             counter = 0;
@@ -29,10 +27,9 @@ const parseFile = (filePaths) => {
     })
     .on("data-invalid", () => ++invalidRows)
     .on("error", (error) => {
-        console.log('oh no', error)
-        return})
+        console.log('oh no', error)})
     .on("end", async (rowCount) => {
-        //when the counter doesn't go over 1000 anymore we insert the rest
+        //when the counter doesn't go over 500 anymore we insert the rest
         console.log(`Parsing done`);
         await Journey.insertMany(journeys);
         journeys = [];
@@ -42,8 +39,9 @@ const parseFile = (filePaths) => {
         });
         readStream.pipe(insertStream);
     };
+
     
-const validateData = (data) => {
+const validateJourneys = (data) => {
   if (
     data["Departure"] == "" ||
     data["Return"] == "" ||
@@ -60,8 +58,34 @@ const validateData = (data) => {
     }
 };
 
+
+const parseStationsFile = (filePaths) => {
+    console.log(`Started adding document ${filePaths} to MongoDB`);
+    let stations = [];   
+    let readStream = fs.createReadStream(filePaths);
+    let insertStream = csv
+    .parse({ headers: true, ignoreEmpty: true })
+    .on("data", (data) => {
+        stations.push({ ...data });
+    })
+    .on("error", (error) => {
+        console.log('oh no', error)})
+    .on("end", async (rowCount) => {
+        console.log(`Parsing done`);
+        await Station.insertMany(stations);
+        stations = [];
+        console.log(
+            `Added ${rowCount} documents to database`
+            );
+        });
+        readStream.pipe(insertStream);
+    };
+    
+
+
 module.exports = {
-    parseFile,
+    parseJourneysFile,
+    parseStationsFile
 };
 
 // if database is empty use these to import all datasets
