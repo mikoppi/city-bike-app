@@ -3,8 +3,7 @@ const fs = require("fs");
 const Journey = require("../models/journeyModel");
 
 
-// const filePaths = ['./data/2021-05.csv', './data/2021-06.csv', './data/2021-07.csv']
-// parseFile(filePaths)
+
 
 const parseFile = (filePaths) => {
     console.log(`Started adding document ${filePaths} to MongoDB`);
@@ -19,7 +18,7 @@ const parseFile = (filePaths) => {
     .on("data", async (data) => {
         ++counter;
         journeys.push({ ...data });
-        if (counter >= 1000) {
+        if (counter >= 500) {
             //data needs be inserted in chunks of 1000 (for example) to avoid a crash
             insertStream.pause();
             await Journey.insertMany(journeys);
