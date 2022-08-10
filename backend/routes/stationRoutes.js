@@ -6,6 +6,6 @@ const Station = require("../models/stationModel");
 
 stationRouter.get('/', paginate(Station), getStations)
 
-//stationRouter.post('/', setJourneys)
+//stationRouter.post('/', setStations)
 
 module.exports = stationRouter

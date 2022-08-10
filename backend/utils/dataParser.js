@@ -88,19 +88,3 @@ module.exports = {
     parseStationsFile
 };
 
-// if database is empty use these to import all datasets
-//parseFile('./data/2021-05.csv')
-// parseFile('./data/2021-06.csv')
-// parseFile('./data/2021-07.csv')
-
-//node backend/utils/dataParser.js
-// await Journey.create({
-    //   Departure: data.Departure,
-    //   Return: data.Return,
-    //   "Departure station id": data["Departure station id"],
-    //   "Departure station name": data["Departure station name"],
-//   "Return station id": data["Return station id"],
-//   "Return station name": data["Return station name"],
-//   "Covered distance (m)": data["Covered distance (m)"],
-//   "Duration (s)": data["Duration (s)"],
-// });

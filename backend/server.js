@@ -20,6 +20,9 @@ app.use('/api/stations', require('./routes/stationRoutes.js'))
 
 
 //if database is empty use this function to import all datasets
+//ONE AT A TIME! Also MongoDB for some reason wont allow me to
+//import all the journey datasets (just 1)
+
 // const importFiles =() => {
 //     //const filePaths = ['./data/2021-05.csv', './data/2021-06.csv', './data/2021-07.csv']
 //     // parser.parseJourneysFile(filePaths[0])
