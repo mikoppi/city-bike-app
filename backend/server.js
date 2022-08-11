@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config()
 const {errorHandler} = require('./utils/errorMiddleware')
 const connectDB = require('./config/database')
 const parser = require('./utils/dataParser')
+const cors = require('cors')
 
 const port = process.env.PORT || 5000
 
@@ -10,6 +11,8 @@ connectDB()
 
 
 const app = express()
+//activate cors
+app.use(cors());
 
 //middleware
 app.use(express.json())

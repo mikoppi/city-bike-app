@@ -21,8 +21,8 @@ body {
 
 
 .nav {
-    background-color:#171a21;
-    color: #8cc9f8;
+    background-color:#2362f5;
+    color: #fdfdfd;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -63,7 +63,7 @@ a {
     padding-right: 0.5rem;
 }
 a:hover {
-    color:white
+    color:rgb(0, 0, 0)
 }
 
 .nav > ul {
@@ -78,4 +78,10 @@ a:hover {
 .site-name {
     font-size: 2.5rem;
     margin-top: 15px;
+}
+
+.journey-item {
+    display: flex;
+    flex-direction: row;
+    gap:10px
 }

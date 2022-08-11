@@ -1,17 +1,18 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"
+import {GiDutchBike} from 'react-icons/gi'
 
 
 const NavBar = () => {
 
   let activeStyle = {
-    backgroundColor: "#1b2838",
+    backgroundColor: "#6491f8",
     
   };
 
   return (
     <nav className='nav'>
-      <Link to='/' className='site-name'>Helsinki city bikes</Link>
+      <Link to='/' className='site-name'>{<GiDutchBike size={60}/>}Helsinki city bikes</Link>
       <ul>
         <li>
           <NavLink

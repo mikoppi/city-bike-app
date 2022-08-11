@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import '../src/App.css'
 
 const App = () => {
+
   return (
     <div className='main'>
       <NavBar/>
