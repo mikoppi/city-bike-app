@@ -1,11 +1,8 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"
-import './styles/NavBar.css'
 
 
-
-
-const NavBar = ({itemCount, handleCartOpen}) => {
+const NavBar = () => {
 
   let activeStyle = {
     backgroundColor: "#1b2838",
@@ -18,7 +15,7 @@ const NavBar = ({itemCount, handleCartOpen}) => {
       <ul>
         <li>
           <NavLink
-              to="/api/journeys"
+              to="/journeys"
               className='router-link'
               style={({ isActive }) =>
               isActive ? activeStyle : undefined
@@ -29,7 +26,7 @@ const NavBar = ({itemCount, handleCartOpen}) => {
         </li>
         <li>
           <NavLink
-              to="/api/stations"
+              to="/stations"
               className='router-link'
               style={({ isActive }) =>
               isActive ? activeStyle : undefined

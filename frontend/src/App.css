@@ -1,7 +1,7 @@
-@font-face {
-    font-family: 'Amazon';
-    src: url('/src/downloads/OfficinaSansStd-Bold.otf') format('truetype');
-  }
+
+* {
+    box-sizing:border-box;
+}
 
 body {
     margin:0;
@@ -31,4 +31,51 @@ body {
     position: sticky;
     top: 0;
     z-index:2
+}
+
+@media (max-width: 800px) {
+    .nav {
+        justify-content: center;
+        gap:0.1rem; 
+    }
+
+
+    nav > .site-name {
+        font-size: 1.2rem;
+    
+    }
+
+    .router-link {
+        font-size: 0.8rem;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    height:100%;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+a:hover {
+    color:white
+}
+
+.nav > ul {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    display: flex;
+    gap: 1rem;
+}
+
+
+.site-name {
+    font-size: 2.5rem;
+    margin-top: 15px;
 }
