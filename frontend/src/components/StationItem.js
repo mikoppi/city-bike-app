@@ -11,7 +11,7 @@ const StationItem = ({ item}) => {
 
   return (
     <div className='station-item'>
-        <button onClick={showDetails} >{item.Name}</button>
+        <button className={`detailbutton-${detailsOpen ? 'open' : 'closed'}`} onClick={showDetails} >{item.Name}</button>
         <div className='details-wrapper'>
         <>{detailsOpen ? <Details item={item} /> : null }</>
         </div>

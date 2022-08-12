@@ -36,7 +36,7 @@ body {
     padding: 0 8rem;
     position: sticky;
     top: 0;
-    z-index:2
+    z-index:4
 }
 
 @media (max-width: 800px) {
@@ -95,7 +95,7 @@ a:hover {
     align-items: center;
     width: 100%;
     height: 100vh;
-    margin-top: 100px;
+    margin-top: 80px;
     
 }
 
@@ -108,12 +108,45 @@ a:hover {
 }
 .station-item > button {
     width: 100%;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     border-style: none;
     background-color: rgb(216, 215, 215);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
+
+.station-item > .detailbutton-closed:after {
+    content: '';
+    position: relative;
+    right: -15px;
+    top:15px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.station-item > .detailbutton-open:after {
+    content: '';
+    position: relative;
+    right: -15px;
+    top:-15px;
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+ 
+}
+.station-item > .detailbutton-open:hover,
+.station-item > .detailbutton-closed:hover
+{
+    transform: scale(1.05);
+}
+
 
 .details-wrapper {
     display: flex;
@@ -152,6 +185,7 @@ a:hover {
     width: 100%;
     background-color: #2362f5;
     margin-bottom: 20px;
+    z-index: -1;
 }
 
 .leaflet-container {
@@ -211,7 +245,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
     justify-items: center;
     
     margin:0;
-    background-color: rgb(211, 211, 211);
+    background-color: rgb(223, 222, 222);
     gap: 10px;
     margin-bottom: 8px;
     border-radius: 5px;
