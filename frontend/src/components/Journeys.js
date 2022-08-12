@@ -22,7 +22,7 @@ const Journeys = () => {
     const fetchJourneys =  async () => {
         
         try {
-            const response = await fetch(`http://localhost:5000/api/journeys?page=${page}&limit=20`)
+            const response = await fetch(`${API_URL}/journeys?page=${page}&limit=20`)
             const journeys = await response.json();
             setList(journeys)
             setLoading(false)
