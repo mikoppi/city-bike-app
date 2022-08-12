@@ -5,8 +5,8 @@ const JourneyItem = ({dep, ret, distance, time}) => {
     <div className='journey-item'>
           <p>{dep}</p>
           <p>{ret}</p>
-          <p>{distance}km</p>
-          <p>{time}min</p>
+          <p>{distance} km</p>
+          <p>{time} min</p>
   
       </div>
   )

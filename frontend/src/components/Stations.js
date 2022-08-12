@@ -16,7 +16,7 @@ const Stations = () => {
         fetchStations()
         
         
-    },[list])
+    },[])
 
 
     const fetchStations =  async () => {
@@ -32,6 +32,20 @@ const Stations = () => {
         }
     };
 
+    const changePage = async (change) => {
+      setLoading(true)
+      if((page+change) <= 0) {
+          setLoading(false)
+      } else {
+          setPage(page+(change))
+          setLoading(true)
+          const response = await fetch(`${API_URL}/stations?page=${page+(change)}&limit=20`)
+          const data = await response.json()
+          setList(data)
+          setLoading(false);
+      }
+  }
+
     
     
 
@@ -45,6 +59,12 @@ const Stations = () => {
             item={item}
             />
         )}
+        {loading ? null : <div className='pagination'>
+          {page === 1 ? null : <button onClick={() =>changePage(-1)}>&laquo;</button>}
+          <p>Page {page} of {list.last}</p>
+          {page === parseInt(list.last) ? null : <button onClick={() =>changePage(1)} >&raquo;</button>}
+        </div>}
+
         
     </div>
   )

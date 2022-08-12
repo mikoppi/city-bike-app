@@ -6,7 +6,7 @@ const Details = ({ item }) => {
     <div className="details">
       <div className="details-text">
         <h2>{item.Name}</h2>
-        <p> Address: {item.Adress}</p>
+        <p> Address: {item.Osoite}</p>
         <p> City: {item.Kaupunki}</p>
         <p> Operator: {item.Operaattor}</p>
         <p> Capacity: {item.Kapasiteet} bikes</p>

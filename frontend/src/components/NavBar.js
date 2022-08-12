@@ -12,7 +12,7 @@ const NavBar = () => {
 
   return (
     <nav className='nav'>
-      <Link to='/' className='site-name'>{<GiDutchBike size={60}/>}Helsinki city bikes</Link>
+      <Link to='/' className='site-name'>{<GiDutchBike size={50}/>}||  HSL city bikes</Link>
       <ul>
         <li>
           <NavLink
