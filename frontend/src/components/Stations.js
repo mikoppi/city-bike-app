@@ -53,6 +53,11 @@ const Stations = () => {
 
   return (
     <div className='stations'>
+        {loading ? null : <div className='pagination'>
+          {page === 1 ? null : <button onClick={() =>changePage(-1)}>&laquo;</button>}
+          <p>Page {page} of {list.last}</p>
+          {page === parseInt(list.last) ? null : <button onClick={() =>changePage(1)} >&raquo;</button>}
+        </div>}
         {loading ? null : list.results.map((item, index) => 
             <StationItem
             key={index}
