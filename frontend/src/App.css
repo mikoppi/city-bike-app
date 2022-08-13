@@ -290,5 +290,30 @@ nav > .site-name {
     font-size: 0.8rem;
 
 }
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.search-form > input {
+    margin-bottom: 5px;
+}
     
+}
+
+.search {
+    margin-bottom: 40px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+}
+
+.search-form > input {
+    margin-left: 5px;
+    margin-right: 5px;
 }
