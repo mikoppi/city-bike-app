@@ -108,13 +108,14 @@ a:hover {
 }
 .station-item > button {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     border-style: none;
     background-color: rgb(216, 215, 215);
     margin-bottom: 17px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.5s ease-in-out;
+    
 }
 
 .station-item > .detailbutton-closed:after {
@@ -185,7 +186,7 @@ a:hover {
     width: 100%;
     background-color: #2362f5;
     margin-bottom: 20px;
-    z-index: -1;
+    z-index: 1;
 }
 
 .leaflet-container {

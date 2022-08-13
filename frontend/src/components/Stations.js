@@ -6,6 +6,7 @@ const Stations = () => {
     const [list, setList] = useState();
     const [page, setPage ] = useState(1)
     const [loading, setLoading] = useState(true);
+    const [searched, setSearched] = useState('')
    
     
 
@@ -32,6 +33,8 @@ const Stations = () => {
         }
     };
 
+   
+
     const changePage = async (change) => {
       setLoading(true)
       if((page+change) <= 0) {
@@ -46,6 +49,25 @@ const Stations = () => {
       }
   }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const response = await fetch(`${API_URL}/search?station=${searched}`, )
+            const data = await response.json()
+            setList(data)
+        } catch (err) {
+            console.log(err)
+        }
+        setLoading(false);
+    }
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        const value = e.target.value
+        setSearched(value)
+    }
+
     
     
 
@@ -53,6 +75,11 @@ const Stations = () => {
 
   return (
     <div className='stations'>
+        <form onSubmit={(e)=>handleSubmit(e)}>
+            <label htmlFor='search'>Search a station: </label>
+            <input type='text' id='search' onChange={(e)=>handleChange(e) } />
+            <input type='submit' value='Submit'/>
+        </form>
         {loading ? null : <div className='pagination'>
           {page === 1 ? null : <button onClick={() =>changePage(-1)}>&laquo;</button>}
           <p>Page {page} of {list.last}</p>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import JourneyItem from './JourneyItem';
+import { Circles } from  'react-loader-spinner'
 
 
 const Journeys = () => {
@@ -54,6 +55,7 @@ const Journeys = () => {
 
   return (
     <div className='journeys'>
+        
         {loading ? null : <div className='pagination'>
           {page === 1 ? null : <button onClick={() =>changePage(-1)}>&laquo;</button>}
           <p> Page {page} of {list.last}</p>
@@ -65,6 +67,7 @@ const Journeys = () => {
             <h3>Distance (km)</h3>
             <h3>Duration (min)</h3>
         </div>
+        {loading ? <Circles color="#00BFFF" height={80} width={80}/> : null}
         {loading ? null : list.results.map((item, index) => 
             <JourneyItem
             key={index} 
