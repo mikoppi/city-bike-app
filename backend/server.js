@@ -4,6 +4,7 @@ const { errorHandler } = require("./utils/errorMiddleware");
 const connectDB = require("./config/database");
 const parser = require("./utils/dataParser");
 const cors = require("cors");
+const path = require('path')
 
 
 
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../frontend/build'))
 
     app.get('*', (req, res) => {
-        res.sendFile(resolve('../frontend/build/index.html'))
+        res.sendFile(path.resolve(__dirname,'../frontend', 'build', 'index.html' ))
     })
 }
 
