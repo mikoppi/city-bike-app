@@ -6,6 +6,7 @@ const parser = require("./utils/dataParser");
 const cors = require("cors");
 
 
+
 const port = process.env.PORT || 5000;
 
 connectDB();
@@ -28,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../frontend/build'))
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve('../frontend/build/index.html'))
+        res.sendFile(resolve('../frontend/build/index.html'))
     })
 }
 
