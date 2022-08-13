@@ -1,5 +1,5 @@
 const express = require("express");
-const dotenv = require("dotenv").config();
+//const dotenv = require("dotenv").config();
 const { errorHandler } = require("./utils/errorMiddleware");
 const connectDB = require("./config/database");
 const parser = require("./utils/dataParser");
@@ -26,9 +26,11 @@ app.use("/api/details", require("./routes/detailRoutes.js"));
 app.use("/api/search", require("./routes/search.js"));
 
 //Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname,'../frontend/build')))
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()  
+    } else {
 
+    app.use(express.static(path.resolve(__dirname,'../frontend/build')))
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname,'../frontend/build', 'index.html' ))
     })
