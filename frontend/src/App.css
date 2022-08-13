@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
 }
 
@@ -87,7 +87,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  
   margin-top: 20px;
 }
 
@@ -230,7 +230,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height:100vh;
+  
   margin-top: 10px;
 }
 
@@ -245,7 +245,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
   gap: 10px;
   margin-bottom: 8px;
   border-radius: 5px;
-  width: 80%;
+  width: 70%;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -339,7 +339,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
 .home {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: 100vh;
     color: white;
     font-size: 1.6rem;
 }
@@ -384,6 +384,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
     padding-top: 10px;
     padding-bottom: 5px;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.295);
     
 }
 
