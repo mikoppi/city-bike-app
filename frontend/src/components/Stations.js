@@ -59,7 +59,7 @@ const Stations = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     setSearched(value);
   };
 
