@@ -5,6 +5,7 @@ const connectDB = require("./config/database");
 const parser = require("./utils/dataParser");
 const cors = require("cors");
 
+
 const port = process.env.PORT || 5000;
 
 connectDB();
@@ -21,6 +22,15 @@ app.use("/api/journeys", require("./routes/journeyRoutes.js"));
 app.use("/api/stations", require("./routes/stationRoutes.js"));
 app.use("/api/details", require("./routes/detailRoutes.js"));
 app.use("/api/search", require("./routes/search.js"));
+
+//Serve static assets if in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./frontend/build'))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve('./frontend/build/index.html'))
+    })
+}
 
 //if database is empty use this function to import all datasets
 //ONE AT A TIME! Also MongoDB for some reason wont allow me to
