@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: false}))
 
 app.use('/api/journeys', require('./routes/journeyRoutes.js'))
 app.use('/api/stations', require('./routes/stationRoutes.js'))
-
+app.use('/api/details', require('./routes/detailRoutes.js'))
+app.use('/api/search', require('./routes/search.js') )
 
 //if database is empty use this function to import all datasets
 //ONE AT A TIME! Also MongoDB for some reason wont allow me to
