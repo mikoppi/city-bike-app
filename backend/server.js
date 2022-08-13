@@ -1,27 +1,26 @@
-const express = require('express')
-const dotenv = require('dotenv').config()
-const {errorHandler} = require('./utils/errorMiddleware')
-const connectDB = require('./config/database')
-const parser = require('./utils/dataParser')
-const cors = require('cors')
+const express = require("express");
+const dotenv = require("dotenv").config();
+const { errorHandler } = require("./utils/errorMiddleware");
+const connectDB = require("./config/database");
+const parser = require("./utils/dataParser");
+const cors = require("cors");
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5000;
 
-connectDB()
+connectDB();
 
-
-const app = express()
+const app = express();
 //activate cors
 app.use(cors());
 
 //middleware
-app.use(express.json())
-app.use(express.urlencoded({ extended: false}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/journeys', require('./routes/journeyRoutes.js'))
-app.use('/api/stations', require('./routes/stationRoutes.js'))
-app.use('/api/details', require('./routes/detailRoutes.js'))
-app.use('/api/search', require('./routes/search.js') )
+app.use("/api/journeys", require("./routes/journeyRoutes.js"));
+app.use("/api/stations", require("./routes/stationRoutes.js"));
+app.use("/api/details", require("./routes/detailRoutes.js"));
+app.use("/api/search", require("./routes/search.js"));
 
 //if database is empty use this function to import all datasets
 //ONE AT A TIME! Also MongoDB for some reason wont allow me to
@@ -37,6 +36,6 @@ app.use('/api/search', require('./routes/search.js') )
 // }
 // importFiles()
 
-app.use(errorHandler)
+app.use(errorHandler);
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+app.listen(port, () => console.log(`Server running on port ${port}`));

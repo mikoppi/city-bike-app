@@ -1,19 +1,17 @@
-
 * {
-    box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 @font-face {
-    font-family: 'Gotham';
-    src: url('./GothamRounded-Book.otf') format('truetype');
-  }
+  font-family: "Gotham";
+  src: url("./GothamRounded-Book.otf") format("truetype");
+}
 
 body {
-    margin:0;
-    padding:0;
-    height: 100vh;
-    font-family: 'Gotham';
-    
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: "Gotham";
 }
 
 .main {
@@ -24,251 +22,228 @@ body {
   position: relative;
 }
 
-
-
 .nav {
-    background-color:#2362f5;
-    color: #fdfdfd;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap:2rem;
-    padding: 0 8rem;
-    position: sticky;
-    top: 0;
-    z-index:4
+  background-color: #2362f5;
+  color: #fdfdfd;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 2rem;
+  padding: 0 8rem;
+  position: sticky;
+  top: 0;
+  z-index: 4;
 }
 
 @media (max-width: 800px) {
-    .nav {
-        justify-content: center;
-        gap:0.1rem; 
-    }
+  .nav {
+    justify-content: center;
+    gap: 0.1rem;
+  }
 
+  nav > .site-name {
+    font-size: 1.2rem;
+  }
 
-    nav > .site-name {
-        font-size: 1.2rem;
-    
-    }
-
-    .router-link {
-        font-size: 0.8rem;
-    }
+  .router-link {
+    font-size: 0.8rem;
+  }
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
-    height:100%;
-    display: flex;
-    align-items: center;
-    padding: 0.25rem;
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 a:hover {
-    color:rgb(0, 0, 0)
+  color: rgb(0, 0, 0);
 }
 
 .nav > ul {
-    list-style-type: none;
-    padding: 0;
-    margin:0;
-    display: flex;
-    gap: 1rem;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
 }
-
 
 .site-name {
-    font-size: 2.5rem;
-    margin-top: 15px;
+  font-size: 2.5rem;
+  margin-top: 15px;
 }
 
-
-
-
 .stations {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    margin-top: 20px;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin-top: 20px;
 }
 
 .station-item {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .station-item > button {
-    width: 100%;
-    font-size: 1.8rem;
-    border-style: none;
-    background-color: rgb(216, 215, 215);
-    margin-bottom: 17px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.5s ease-in-out;
-    
+  width: 100%;
+  font-size: 1.8rem;
+  border-style: none;
+  background-color: rgb(216, 215, 215);
+  margin-bottom: 17px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
 }
 
 .station-item > .detailbutton-closed:after {
-    content: '';
-    position: relative;
-    right: -15px;
-    top:15px;
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid black;
+  content: "";
+  position: relative;
+  right: -15px;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
 }
 
 .station-item > .detailbutton-open:after {
-    content: '';
-    position: relative;
-    right: -15px;
-    top:-15px;
-    width: 0; 
-    height: 0; 
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid black;
- 
+  content: "";
+  position: relative;
+  right: -15px;
+  top: -15px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
 }
 .station-item > .detailbutton-open:hover,
-.station-item > .detailbutton-closed:hover
-{
-    transform: scale(1.05);
+.station-item > .detailbutton-closed:hover {
+  transform: scale(1.05);
 }
 
-
 .details-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .details:first-child {
-    display: flex;
-    justify-content: flex-start;
-    
+  display: flex;
+  justify-content: flex-start;
 }
 
 .details-text {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    margin:0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 0;
 }
 
 .details {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.details-text >* {
-    margin:5px
+.details-text > * {
+  margin: 5px;
 }
 
 .map {
-    height: 300px;
-    width: 100%;
-    background-color: #2362f5;
-    margin-bottom: 20px;
-    z-index: 1;
+  height: 300px;
+  width: 100%;
+  background-color: #2362f5;
+  margin-bottom: 20px;
+  z-index: 1;
 }
 
 .leaflet-container {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
-
 div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
-    transform: scale(0.7);
-    bottom:-20px;
-    right: -35px
+  transform: scale(0.7);
+  bottom: -20px;
+  right: -35px;
 }
 
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 0px;
-    width: 70%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 0px;
+  width: 70%;
 }
 
 .pagination > button {
-    margin: 0;
-    padding: 5px;
-    font-size: 3rem;
-    border-style: none;
-
+  margin: 0;
+  padding: 5px;
+  font-size: 3rem;
+  border-style: none;
 }
 
 .pagination > button:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .pagination > p {
-    font-size: 1.7rem;
-    position: relative;
-    top: 3px
+  font-size: 1.7rem;
+  position: relative;
+  top: 3px;
 }
 
-
 .journeys {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin-top: 10px;
 }
 
 .journey-item,
 .titles {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    
-    margin:0;
-    background-color: rgb(223, 222, 222);
-    gap: 10px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-    width: 80%;
-    padding-left: 20px;
-    padding-right: 20px;
-    
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+
+  margin: 0;
+  background-color: rgb(223, 222, 222);
+  gap: 10px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  width: 80%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .titles {
-    background-color: rgb(164, 194, 238);
+  background-color: rgb(164, 194, 238);
 }
 
-
 @media (max-width: 500px) {
-
-    .journey-item,
-    .titles {
+  .journey-item,
+  .titles {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    
-    margin:0;
+
+    margin: 0;
     background-color: rgb(223, 222, 222);
     gap: 3px;
     margin-bottom: 8px;
@@ -277,43 +252,39 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
     padding-left: 10px;
     padding-right: 10px;
     font-size: 0.6rem;
-    
-}
-.pagination > p {
+  }
+  .pagination > p {
     font-size: 1.1rem;
     position: relative;
-    top: 3px
-}
+    top: 3px;
+  }
 
-
-nav > .site-name {
+  nav > .site-name {
     font-size: 0.8rem;
+  }
 
-}
-
-.search-form {
+  .search-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+  }
 
-.search-form > input {
+  .search-form > input {
     margin-bottom: 5px;
-}
-    
+  }
 }
 
 .search {
-    margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
 .search-form {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .search-form > input {
-    margin-left: 5px;
-    margin-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

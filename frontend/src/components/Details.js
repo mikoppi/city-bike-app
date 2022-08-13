@@ -2,16 +2,12 @@ import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Details = ({ item, details, loading }) => {
-
-
-  
   return (
-    
     <div className="details">
       <div className="details-text">
         <h2>{item.Name}</h2>
         <p> Address: {item.Osoite}</p>
-        <p> City: {item.Kaupunki==='Espoo' ? 'Espoo' : 'Helsinki'}</p>
+        <p> City: {item.Kaupunki === "Espoo" ? "Espoo" : "Helsinki"}</p>
         <p> Operator: {item.Operaattor}</p>
         <p> Capacity: {item.Kapasiteet} bikes</p>
         <p>Amount of departures: {details.depAmount}</p>
