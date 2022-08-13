@@ -87,7 +87,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  
+  min-height: 100vh;
   margin-top: 20px;
 }
 
@@ -230,7 +230,7 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  
+  min-height:100vh;
   margin-top: 10px;
 }
 
@@ -296,6 +296,17 @@ div.leaflet-control-container > div.leaflet-bottom.leaflet-right > div {
   .footer {
     position: relative;
     bottom:-50px
+  }
+
+  .home > .home-stations > h1{
+    font-size: 1.5rem
+  }
+  .home > .home-journeys > h1{
+    font-size: 1.5rem
+  }
+
+  .station-item > button {
+    font-size: 1.4rem;
   }
 }
 
