@@ -34,7 +34,7 @@ const Stations = () => {
       setPage(page + change);
       setLoading(true);
       const response = await fetch(
-        `${API_URL}/stations?page=${page + change}&limit=20`
+        `api/stations?page=${page + change}&limit=20`
       );
       const data = await response.json();
       setList(data);
