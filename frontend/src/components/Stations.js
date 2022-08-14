@@ -8,7 +8,7 @@ const Stations = () => {
   const [loading, setLoading] = useState(true);
   const [searched, setSearched] = useState("");
 
-  const API_URL = process.env.REACT_APP_API_URL;
+  //const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     setPage(1);
@@ -17,7 +17,7 @@ const Stations = () => {
 
   const fetchStations = async () => {
     try {
-      const response = await fetch(`${API_URL}/stations?page=${page}&limit=20`);
+      const response = await fetch(`api/stations?page=${page}&limit=20`);
       const stations = await response.json();
       setList(stations);
       setLoading(false);
@@ -47,7 +47,7 @@ const Stations = () => {
     setLoading(true);
     if (searched === "") return;
     try {
-      const response = await fetch(`${API_URL}/search?station=${searched}`);
+      const response = await fetch(`api/search?station=${searched}`);
       const data = await response.json();
 
       setList(data);

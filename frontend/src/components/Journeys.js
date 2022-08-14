@@ -7,7 +7,7 @@ const Journeys = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
-  const API_URL = process.env.REACT_APP_API_URL;
+  //const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     setPage(1);
@@ -16,7 +16,7 @@ const Journeys = () => {
 
   const fetchJourneys = async () => {
     try {
-      const response = await fetch(`${API_URL}/journeys?page=${page}&limit=20`);
+      const response = await fetch(`api/journeys?page=${page}&limit=20`);
       const journeys = await response.json();
       setList(journeys);
       setLoading(false);
@@ -33,7 +33,7 @@ const Journeys = () => {
       setPage(page + change);
       setLoading(true);
       const response = await fetch(
-        `${API_URL}/journeys?page=${page + change}&limit=20`
+        `api/journeys?page=${page + change}&limit=20`
       );
       const data = await response.json();
       setList(data);

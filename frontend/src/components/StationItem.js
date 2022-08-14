@@ -6,7 +6,7 @@ const StationItem = ({ item }) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [details, setDetails] = useState([]);
   const [loading, setLoading] = useState(false);
-  const API_URL = process.env.REACT_APP_API_URL;
+  //const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     getDetails();
@@ -19,7 +19,7 @@ const StationItem = ({ item }) => {
   const getDetails = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_URL}/details?station=${item.ID}`);
+      const response = await fetch(`api/details?station=${item.ID}`);
       const data = await response.json();
       setDetails(data);
     } catch (err) {
